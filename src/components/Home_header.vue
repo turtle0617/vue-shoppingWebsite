@@ -1,5 +1,5 @@
 <template>
-  <div class="Appheader">
+  <div class="Home_header">
     <div class="container navbar">
       <ul class="navbar__links">
         <li class="navbar__link--register">註冊</li>
@@ -32,12 +32,12 @@
 
 <script>
 export default {
-  name: "Appheader"
+  name: "Home_header"
 };
 </script>
 
 <style lang="scss" scoped>
-.Appheader {
+.Home_header {
   background-color: #ff531d;
   color: white;
 }

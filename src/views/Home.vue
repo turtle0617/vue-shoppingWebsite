@@ -1,17 +1,20 @@
 <template>
   <div class="home">
-    <Appheader />
+    <Home_header />
+    <Home_banner />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Appheader from "@/components/Appheader.vue";
+import Home_header from "@/components/Home_header.vue";
+import Home_banner from "@/components/Home_banner.vue";
 
 export default {
   name: "home",
   components: {
-    Appheader
+    Home_header,
+    Home_banner
   }
 };
 </script>
