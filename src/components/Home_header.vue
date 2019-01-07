@@ -2,9 +2,9 @@
   <div class="Home_header">
     <div class="container navbar">
       <ul class="navbar__links">
-        <li class="navbar__link--register">註冊</li>
+        <li class="navbar__link--register" v-on:click="authenClick('register')">註冊</li>
         <li class="navbar__link--separator"></li>
-        <li class="navbar__link--account">登入</li>
+        <li class="navbar__link--account" v-on:click="authenClick('login')">登入</li>
       </ul>
     </div>
     <div class="container searchbar">
@@ -32,7 +32,12 @@
 
 <script>
 export default {
-  name: "Home_header"
+  name: "Home_header",
+  methods:{
+    authenClick:function (status) {
+      this.$store.dispatch('authenClick',status);
+    }
+  }
 };
 </script>
 
@@ -50,13 +55,14 @@ export default {
     display: flex;
     justify-content: space-between;
     list-style: none;
-    cursor: pointer;
   }
   &__link--register {
     padding: 0 0.625rem;
+    cursor: pointer;
   }
   &__link--account {
     padding: 0 0.625rem;
+    cursor: pointer;
   }
   &__link--separator {
     width: 1px;

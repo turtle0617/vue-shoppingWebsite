@@ -2,7 +2,7 @@
 <div class="Home_banner">
   <div class="container banner">
     <div class="banner__main carousel">
-      <img v-if="url" v-bind:src="url" alt="">
+      <img v-if="carouseImageURL" v-bind:src="carouseImageURL" alt="">
       <i v-else class="animation__load fas fa-spinner"></i>
       <div class="carousel__arrow carousel__arrow--prev" v-on:click="changeCarouselImage(-1)">
         <i class="fas fa-angle-left"></i>
@@ -38,13 +38,13 @@ export default {
         "https://picsum.photos/800/250?image=70",
         "https://picsum.photos/800/250?image=80"
       ],
-      url: "https://picsum.photos/800/250?image=0"
+      carouseImageURL: "https://picsum.photos/800/250?image=0"
     };
   },
   methods: {
     changeCarouselImage: function(number) {
       const carouselImage = new Image();
-      this.url = "";
+      this.carouseImageURL = "";
       this.carouselSelectInedx += number;
 
       if (this.carouselSelectInedx > 8) {
@@ -56,7 +56,7 @@ export default {
 
       carouselImage.src = this.imageList[this.carouselSelectInedx];
       carouselImage.onload = () => {
-        this.url = carouselImage.src;
+        this.carouseImageURL = carouselImage.src;
       };
     }
   }
@@ -117,7 +117,6 @@ export default {
 }
 .carousel {
   position: relative;
-
   &__arrow {
     color: white;
     position: absolute;
