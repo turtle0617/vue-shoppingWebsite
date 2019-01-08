@@ -33,9 +33,9 @@
 <script>
 export default {
   name: "Home_header",
-  methods:{
-    authenClick:function (status) {
-      this.$store.dispatch('authenClick',status);
+  methods: {
+    authenClick: function(status) {
+      this.$store.dispatch("authenClick", status);
     }
   }
 };

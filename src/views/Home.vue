@@ -19,8 +19,8 @@ export default {
     Home_banner,
     Authen
   },
-  computed:{
-    authenTrigger(){
+  computed: {
+    authenTrigger() {
       return this.$store.getters.authenTrigger;
     }
   }

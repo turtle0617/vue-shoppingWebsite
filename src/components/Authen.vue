@@ -1,7 +1,7 @@
 <template lang="html">
-  <div class="authen__container" v-on:click="test">
-    <Authen_register v-if="authenStatus  === 'register'"/>
-    <Authen_login v-else/>
+  <div class="authen__container" v-on:click="authenClose">
+    <Authen_register  v-if="authenStatus  === 'register'"/>
+    <Authen_login   v-else/>
   </div>
 </template>
 
@@ -19,9 +19,9 @@ export default {
       return this.$store.getters.authenStatus;
     }
   },
-  methods:{
-    test:function(){
-      console.log("hi")
+  methods: {
+    authenClose: function() {
+      this.$store.dispatch("authenClick");
     }
   }
 };

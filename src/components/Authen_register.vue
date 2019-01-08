@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="authen">
+  <div class="authen" v-on:click.stop>
     <div class="authen__title">
       <h1 class="authen__title--active">註冊</h1>
       <button class="authen__title--change" v-on:click="changeAuthenStatus"> 登入</button>
@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="authen__form--footer">
-        <button  name="cancel" class="footer__status footer__status--cancel" v-on:click="authenClick">取消</button>
+        <button  name="cancel" class="footer__status footer__status--cancel" v-on:click="authenClose">取消</button>
         <button  name="register" class="footer__status footer__status--submit">註冊</button>
       </div>
     </div>
@@ -27,12 +27,12 @@
 <script>
 export default {
   name: "authen_register",
-  methods:{
-    changeAuthenStatus: function () {
-      this.$store.dispatch('changeAuthenStatus',"login");
+  methods: {
+    changeAuthenStatus: function() {
+      this.$store.dispatch("changeAuthenStatus", "login");
     },
-    authenClick:function (status) {
-      this.$store.dispatch('authenClick',status);
+    authenClose: function() {
+      this.$store.dispatch("authenClick");
     }
   }
 };
