@@ -64,6 +64,11 @@ export default {
       color: #ff531d;
     }
   }
+  &__error{
+    color: red;
+    margin-bottom: 5px;
+    font-size: .875rem;
+  }
 }
 .input__container {
   margin-bottom: 15px;
@@ -80,6 +85,16 @@ export default {
   }
   &:focus {
     border: 1px solid rgba(0, 0, 0, 1);
+  }
+}
+.input__error{
+  color: red;
+  span{
+    font-size: 0.8125rem;
+  }
+  input {
+    border: 1px solid rgba(255, 0, 0, 1);
+    background-color: rgba(255,0,0,0.1);
   }
 }
 .authen__form {

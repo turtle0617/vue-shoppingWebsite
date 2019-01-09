@@ -6,14 +6,18 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     authenStatus: "",
-    authenTrigger: false
+    isAuthenBeTrigger: false,
+    userName: ""
   },
   getters: {
     authenStatus: state => {
       return state.authenStatus;
     },
-    authenTrigger: state => {
-      return state.authenTrigger;
+    isAuthenBeTrigger: state => {
+      return state.isAuthenBeTrigger;
+    },
+    userName: state => {
+      return state.userName;
     }
   },
   mutations: {
@@ -21,7 +25,13 @@ export default new Vuex.Store({
       state.authenStatus = status;
     },
     authenClick(state) {
-      state.authenTrigger = !state.authenTrigger;
+      state.isAuthenBeTrigger = !state.isAuthenBeTrigger;
+    },
+    login(state,status) {
+      state.userName = status;
+    },
+    logout(state){
+      state.userName = "";
     }
   },
   actions: {
@@ -33,6 +43,13 @@ export default new Vuex.Store({
         context.commit("changeAuthenStatus", status);
       }
       context.commit("authenClick");
+    },
+    login(context, status) {
+      context.commit("login", status);
+      context.commit("authenClick");
+    },
+    logout(context){
+      context.commit("logout");
     }
   }
 });

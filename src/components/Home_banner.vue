@@ -90,15 +90,21 @@ export default {
   display: flex;
   height: 35vh;
   min-height: 250px;
+  flex-wrap: wrap;
+  img{
+    width: 100%;
+  }
   &__main {
-    width: 66.5%;
+    box-sizing: border-box;
+    flex-basis: 66.5%;
   }
   &__right {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 33.5%;
-    margin-left: 5px;
+    flex-basis: 33.5%;
+    box-sizing: border-box;
+    padding-left: 5px;
     &--AD {
       background-repeat: no-repeat;
       background-size: cover;

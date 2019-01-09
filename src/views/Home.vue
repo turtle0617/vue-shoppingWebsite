@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Authen v-if="authenTrigger"/>
+    <Authen v-if="isAuthenBeTrigger"/>
     <Home_header />
     <Home_banner />
   </div>
@@ -20,8 +20,8 @@ export default {
     Authen
   },
   computed: {
-    authenTrigger() {
-      return this.$store.getters.authenTrigger;
+    isAuthenBeTrigger() {
+      return this.$store.getters.isAuthenBeTrigger;
     }
   }
 };

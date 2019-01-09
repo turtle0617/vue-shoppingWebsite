@@ -1,10 +1,15 @@
 <template>
   <div class="Home_header">
     <div class="container navbar">
-      <ul class="navbar__links">
-        <li class="navbar__link--register" v-on:click="authenClick('register')">註冊</li>
-        <li class="navbar__link--separator"></li>
-        <li class="navbar__link--account" v-on:click="authenClick('login')">登入</li>
+      <ul v-if="userName" class="navbar__links">
+        <li class="navbar__link">歡迎回來 {{userName}}</li>
+        <li class="navbar__link navbar__link--separator"></li>
+        <li class="navbar__link" v-on:click="logout">登出</li>
+      </ul>
+      <ul v-else class="navbar__links">
+        <li class="navbar__link navbar__link--register" v-on:click="authenClick('register')">註冊</li>
+        <li class="navbar__link navbar__link--separator"></li>
+        <li class="navbar__link navbar__link--account" v-on:click="authenClick('login')">登入</li>
       </ul>
     </div>
     <div class="container searchbar">
@@ -33,9 +38,17 @@
 <script>
 export default {
   name: "Home_header",
+  computed: {
+    userName() {
+      return this.$store.getters.userName;
+    }
+  },
   methods: {
     authenClick: function(status) {
       this.$store.dispatch("authenClick", status);
+    },
+    logout:function(){
+      this.$store.dispatch('logout')
     }
   }
 };
@@ -56,18 +69,15 @@ export default {
     justify-content: space-between;
     list-style: none;
   }
-  &__link--register {
+  &__link{
     padding: 0 0.625rem;
     cursor: pointer;
-  }
-  &__link--account {
-    padding: 0 0.625rem;
-    cursor: pointer;
-  }
-  &__link--separator {
-    width: 1px;
-    height: 0.8125rem;
-    background-color: white;
+    &--separator {
+      width: 1px;
+      height: 0.8125rem;
+      padding: 0;
+      background-color: white;
+    }
   }
 }
 .searchbar {
