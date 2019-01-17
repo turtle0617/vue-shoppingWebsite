@@ -27,10 +27,10 @@ export default new Vuex.Store({
     authenClick(state) {
       state.isAuthenBeTrigger = !state.isAuthenBeTrigger;
     },
-    login(state,status) {
+    login(state, status) {
       state.userName = status;
     },
-    logout(state){
+    logout(state) {
       state.userName = "";
     }
   },
@@ -48,7 +48,7 @@ export default new Vuex.Store({
       context.commit("login", status);
       context.commit("authenClick");
     },
-    logout(context){
+    logout(context) {
       context.commit("logout");
     }
   }

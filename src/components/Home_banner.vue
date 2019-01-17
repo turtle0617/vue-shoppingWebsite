@@ -91,7 +91,7 @@ export default {
   height: 35vh;
   min-height: 250px;
   flex-wrap: wrap;
-  img{
+  img {
     width: 100%;
   }
   &__main {

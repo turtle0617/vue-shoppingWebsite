@@ -11,7 +11,7 @@
           <input type="text"
           class="input__status status__account"
           v-model="authenLogin_userName"
-          v-on:focusout="checkuserName"
+          v-on:focusout="checkuserNameIsEmpty"
           v-on:focus="resetError"
           name="authenLogin_userName" placeholder="使用者帳號">
           <span v-if="emptyError">格式錯誤</span>
@@ -47,37 +47,36 @@ export default {
     authenClose: function() {
       this.$store.dispatch("authenClick");
     },
-    checkuserName: function() {
-      console.log();
+    checkuserNameIsEmpty: function() {
       if (this.authenLogin_userName.trim()) {
         this.emptyError = false;
       } else {
         this.emptyError = true;
       }
     },
-    resetError: function(){
+    resetError: function() {
       this.emptyError = false;
       this.isUserMatch = false;
     },
     login: function() {
       if (!this.authenLogin_userName || !this.authenLogin_password) return;
-      db.collection('user')
-      .where('name','==',this.authenLogin_userName)
-      .get()
-      .then(snapshot=>{
-        const isMatch = snapshot.docs.length
-        if(!isMatch) {
-          console.log("err");
-          return;
-        }
-        const userDetail = snapshot.docs[0].data();
-        if(userDetail.password === this.authenLogin_password){
-          this.$store.dispatch('login',userDetail.name);
-        }else{
-          this.isUserMatch = true
-        }
-      })
-    },
+      db.collection("user")
+        .where("name", "==", this.authenLogin_userName)
+        .get()
+        .then(snapshot => {
+          const isMatch = snapshot.docs.length;
+          if (!isMatch) {
+            this.isUserMatch = true;
+            return;
+          }
+          const userDetail = snapshot.docs[0].data();
+          if (userDetail.password === this.authenLogin_password) {
+            this.$store.dispatch("login", userDetail.name);
+          } else {
+            this.isUserMatch = true;
+          }
+        });
+    }
   }
 };
 </script>

@@ -47,8 +47,8 @@ export default {
     authenClick: function(status) {
       this.$store.dispatch("authenClick", status);
     },
-    logout:function(){
-      this.$store.dispatch('logout')
+    logout: function() {
+      this.$store.dispatch("logout");
     }
   }
 };
@@ -69,9 +69,12 @@ export default {
     justify-content: space-between;
     list-style: none;
   }
-  &__link{
+  &__link {
     padding: 0 0.625rem;
     cursor: pointer;
+    &:hover {
+      color: rgba(255, 255, 255, 0.5);
+    }
     &--separator {
       width: 1px;
       height: 0.8125rem;
